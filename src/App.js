@@ -1,7 +1,7 @@
 import TodoInsert from './components/TodoInsert';
 import TodoTemplate from './components/TodoTemplate';
 import TodoList from './components/TodoList';
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 
 function App() {
   const [todos, setTodos] = useState([
@@ -27,9 +27,21 @@ function App() {
     },
   ])
 
+  const nextId = useRef(5);
+
+  const onInsert = useCallback((text) => {
+    const todo = {
+      id:nextId.current,
+      text,
+      checkd:false
+    }
+    setTodos(todos.concat(todo));
+    nextId.current+=1;
+  }, [todos])
+
   return (
     <TodoTemplate>
-      <TodoInsert/>
+      <TodoInsert onInsert = {onInsert}/>
       <TodoList todos={todos}/>
     </TodoTemplate>
   );
