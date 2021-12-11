@@ -46,7 +46,7 @@ function App() {
     const todo = {
       id:nextId.current,
       text,
-      checkd:false
+      checked:false
     }
     setTodos(todos => todos.concat(todo));
     nextId.current+=1;
