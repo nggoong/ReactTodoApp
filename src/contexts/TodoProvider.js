@@ -27,7 +27,7 @@ const TodoProvider = ( {children} ) => {
           },
         ]);
 
-        let nextId = 5;
+    let nextId = 5;
     
     
         const onInsert = (text) => {
@@ -37,13 +37,17 @@ const TodoProvider = ( {children} ) => {
                 checked:false
             }
             setTodos(todos => todos.concat(todo));
-            nextId += 1;
+            nextId = nextId + 1;
+        }
+
+        const onRemove = (id) => {
+            setTodos((todos)=> todos.filter(todo=>todo.id!=id));
         }
         
 
         const value = {
             state: {todos},
-            actions: {setTodos, onInsert}
+            actions: {setTodos, onInsert, onRemove}
         }
 
     return(

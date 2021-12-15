@@ -32,7 +32,7 @@ function App() {
     <TodoProvider>
     <TodoTemplate>
       <TodoInsert/>
-      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle}/>
+      <TodoList onRemove={onRemove} onToggle={onToggle}/>
     </TodoTemplate>
     </TodoProvider>
   );

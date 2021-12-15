@@ -9,3 +9,6 @@
 
 3. react-icons
 >npm install --save react-icons
+
+4. context API
+> useContext 훅을 사용한 context API 적용
