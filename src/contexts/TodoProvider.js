@@ -1,4 +1,4 @@
-import React, { useState, createContext} from 'react';
+import React, { useState, createContext, useRef } from 'react';
 
 
 export const TodoContext = createContext();
@@ -27,17 +27,17 @@ const TodoProvider = ( {children} ) => {
           },
         ]);
 
-    let nextId = 5;
+    const nextId = useRef(5);
     
     
         const onInsert = (text) => {
             const todo = {
-                id:nextId,
+                id:nextId.current,
                 text:text,
                 checked:false
             }
             setTodos(todos => todos.concat(todo));
-            nextId = nextId + 1;
+            nextId.current += 1;
         }
 
         const onRemove = (id) => {
