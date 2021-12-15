@@ -1,8 +1,10 @@
 import { BsPlusCircle } from "react-icons/bs";
 import './TodoInsert.scss';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
+import { TodoContext } from "../contexts/TodoProvider";
 
-const TodoInsert = ({ onInsert }) => {
+const TodoInsert = () => {
+    const context = useContext(TodoContext);
     const [value, setValue] = useState('');
 
     const onChange = useCallback(e=> {
@@ -11,9 +13,9 @@ const TodoInsert = ({ onInsert }) => {
 
     const onSubmit = useCallback((e)=> {
         e.preventDefault();
-        onInsert(value);
+        context.actions.onInsert(value);
         setValue('');
-    }, [onInsert, value]);
+    }, [context.actions, value]);
 
     return(
         <form className="TodoInsert" onSubmit={onSubmit}>

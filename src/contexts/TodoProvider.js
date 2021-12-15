@@ -25,12 +25,25 @@ const TodoProvider = ( {children} ) => {
             text:'병원 갔다오기',
             checked:false
           },
-        ])
+        ]);
+
+        let nextId = 5;
+    
+    
+        const onInsert = (text) => {
+            const todo = {
+                id:nextId,
+                text:text,
+                checked:false
+            }
+            setTodos(todos => todos.concat(todo));
+            nextId += 1;
+        }
         
 
         const value = {
             state: {todos},
-            actions: {setTodos}
+            actions: {setTodos, onInsert}
         }
 
     return(

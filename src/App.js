@@ -1,7 +1,7 @@
 import TodoInsert from './components/TodoInsert';
 import TodoTemplate from './components/TodoTemplate';
 import TodoList from './components/TodoList';
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback} from 'react';
 import TodoProvider from './contexts/TodoProvider';
 
 function createBulkTodos() {
@@ -20,18 +20,6 @@ function App() {
   
   const [todos, setTodos] = useState(createBulkTodos); // createBulkTodos()을 하면 리렌더링 될 때마다 함수가 실행되지만 함수 명을 넘겨주면 마운트 될 때 한 번만 실행된다.
 
-  const nextId = useRef(2501);
-
-  const onInsert = useCallback((text) => {
-    const todo = {
-      id:nextId.current,
-      text,
-      checked:false
-    }
-    setTodos(todos => todos.concat(todo));
-    nextId.current+=1;
-  }, [])
-
   const onRemove = useCallback((id)=> {
     setTodos(todos => todos.filter(todo=>todo.id !== id));
   }, [])
@@ -43,7 +31,7 @@ function App() {
   return (
     <TodoProvider>
     <TodoTemplate>
-      <TodoInsert onInsert = {onInsert}/>
+      <TodoInsert/>
       <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle}/>
     </TodoTemplate>
     </TodoProvider>
