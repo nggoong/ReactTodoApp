@@ -1,6 +1,6 @@
 import { BsPlusCircle } from "react-icons/bs";
 import './TodoInsert.scss';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 
 const TodoInsert = ({ onInsert }) => {
     const [value, setValue] = useState('');
@@ -14,10 +14,6 @@ const TodoInsert = ({ onInsert }) => {
         onInsert(value);
         setValue('');
     }, [onInsert, value]);
-
-    useEffect(()=> {
-        console.log(value);
-    }, [value]);
 
     return(
         <form className="TodoInsert" onSubmit={onSubmit}>
