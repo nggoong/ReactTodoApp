@@ -13,7 +13,7 @@ const TodoInsert = () => {
 
     const onSubmit = useCallback((e)=> {
         e.preventDefault();
-        context.actions.onInsert(value);
+        context.actions.contextDispatch({type:'ON_INSERT', text: value})
         setValue('');
     }, [context.actions, value]);
 

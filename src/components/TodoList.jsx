@@ -6,8 +6,7 @@ import { TodoContext } from "../contexts/TodoProvider";
 
 const TodoList = () => {
     const context = useContext(TodoContext);
-    
-    let todos = context.state.todos;
+    let todos = context.state.data;
     return(
         <div className="TodoList">
             {todos.map(todo=> {return(<TodoListItem todo={todo} key={todo.id}/>)})}

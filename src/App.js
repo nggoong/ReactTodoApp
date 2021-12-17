@@ -1,7 +1,6 @@
 import TodoInsert from './components/TodoInsert';
 import TodoTemplate from './components/TodoTemplate';
 import TodoList from './components/TodoList';
-import React, { useState, useCallback} from 'react';
 import TodoProvider from './contexts/TodoProvider';
 
 // function createBulkTodos() {

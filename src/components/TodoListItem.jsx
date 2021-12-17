@@ -10,11 +10,11 @@ const TodoListItem = ({ todo }) => {
     const {text, checked, id} = todo;
     return (
         <div className="TodoListItem">
-            <div className={cn('checkbox', {checked})} onClick={()=>context.actions.onToggle(id)}>
+            <div className={cn('checkbox', {checked})} onClick={()=>context.actions.contextDispatch({type:'ON_CHECKED', id: id})}>
                 {checked ? <MdCheckBox/> : <MdCheckBoxOutlineBlank/>}
                 <div className="text">{text}</div>
             </div>
-            <div className="remove" onClick={()=>context.actions.onRemove(id)}>
+            <div className="remove" onClick={()=>context.actions.contextDispatch({type:'ON_REMOVE', id: id})}>
                 <MdRemoveCircleOutline/>
             </div>
         </div>

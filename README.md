@@ -11,4 +11,4 @@
 >npm install --save react-icons
 
 4. context API
-> useContext 훅을 사용한 context API 적용
+> useContext, useReducer Hook을 사용한 context API 적용
