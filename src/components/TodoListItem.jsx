@@ -5,12 +5,12 @@ import './TodoListItem.scss';
 
 import cn from 'classnames';
 
-const TodoListItem = ({ todo, onToggle }) => {
+const TodoListItem = ({ todo }) => {
     const context = useContext(TodoContext);
     const {text, checked, id} = todo;
     return (
         <div className="TodoListItem">
-            <div className={cn('checkbox', {checked})} onClick={()=>onToggle(id)}>
+            <div className={cn('checkbox', {checked})} onClick={()=>context.actions.onToggle(id)}>
                 {checked ? <MdCheckBox/> : <MdCheckBoxOutlineBlank/>}
                 <div className="text">{text}</div>
             </div>

@@ -43,11 +43,15 @@ const TodoProvider = ( {children} ) => {
         const onRemove = (id) => {
             setTodos((todos)=> todos.filter(todo=>todo.id!=id));
         }
+
+        const onToggle = (id) => {
+          setTodos((todos)=>todos.map(todo=> todo.id===id? {...todo, checked:!todo.checked} : todo));
+        }
         
 
         const value = {
             state: {todos},
-            actions: {setTodos, onInsert, onRemove}
+            actions: {setTodos, onInsert, onRemove, onToggle}
         }
 
     return(
